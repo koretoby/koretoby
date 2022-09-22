@@ -1,0 +1,31 @@
+#원 넓이, 둘레 구하기/area of circle, circle circumference
+pi = 3.14159265
+r = 10
+print("원주율 = ", pi)
+print("반지름 = ", r)
+print("원의 둘레 = ", 2 * pi * r)
+print("원의 넓이 = ", pi *r*r)
+
+#치킨 자동주문 시스템/ chicken auto order system
+class soldOutError(Exception):
+   pass
+try:
+  chicken = 10
+  waiting = 1
+  while(True):
+    
+      print("[남은 치킨 : {0}]".format(chicken))
+      order = int(input("치킨 몇마리 주문하시겠습니까?"))
+      if order > chicken:
+          print("재료가 부족합니다.")
+      else:
+          print("[대기번호 : {0}] {1}마리 주문 완료되었습니다.".format(waiting,order))
+          waiting += 1
+          chicken -= order 
+          if chicken == 0:
+              raise soldOutError
+except ValueError:
+    print("잘못된 값을 입력하셨습니다.")
+except soldOutError:
+    print("재고가 소진되어 더이상 주문할 수 없습니다")
+
